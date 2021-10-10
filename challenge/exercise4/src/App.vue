@@ -17,13 +17,40 @@
   </div>
   <h4>Solution</h4>
   <div class="solution">
-    <!-- TODO: implement template here -->
+    <List :data="people" :sorting="sortByAge" :filtering="filterByAge">
+      <template v-slot:default="slotProps">
+        {{ slotProps.item.name }}
+        {{ slotProps.item.age }}
+      </template>
+    </List>
   </div>
 
 </template>
 
 <script>
-  // TODO: implement logic here
+  import {mapActions, mapState} from 'vuex';
+  import HelperFunctions from './helpers/helpers';
+  import List from './components/List';
+
+  export default {
+    name: 'App',
+    components: {List},
+    created() {
+      this.getPeople();
+    },
+    methods: {
+      sortByAge: HelperFunctions.sortByAge,
+      filterByAge: HelperFunctions.filterByAge(25, 35),
+      ...mapActions([
+        'getPeople',
+      ]),
+    },
+    computed: {
+      ...mapState([
+        'people',
+      ]),
+    },
+  };
 </script>
 
 <style lang="scss">
