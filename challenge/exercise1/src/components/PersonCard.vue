@@ -1,31 +1,33 @@
 <template>
   <div>
-    <br/>
     <div class="details" @click="$emit('personClick', person)">
       <h4> {{ person.name }} </h4>
-      <b>Age:</b> {{ person.age }} <br/>
-      <b>Eye Color:</b> {{ person.eyeColour }} <br/>
-      <b>Gender:</b> {{ person.gender }} <br/>
+      <span><b>Age:</b> {{ person.age }}</span>
+      <span><b>Eye Color:</b> {{ person.eyeColour }}</span>
+      <span><b>Gender:</b> {{ person.gender }}</span>
     </div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
   </div>
 </template>
 
 <script>
   export default {
     name: 'PersonCard',
+    emits: ['personClick'],
     props: {
       person: {
         type: Object,
-        default: {},
+        default: () => {},
       },
     },
   };
 </script>
 
 <style scoped>
+
+.details{
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+}
 
 </style>
