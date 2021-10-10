@@ -15,7 +15,9 @@ describe('4 - Features Interactions', () => {
     });
 
     it('Should sort by name descending', ()=>{
-      cy.get('[data-cy=sort-by-name]').click();
+      for(let n = 0; n < 2; n ++){
+        cy.get('[data-cy=sort-by-name]').click();
+      }
       cy.get('[data-cy=cell-1-1]').contains('Zimmerman Barry');
     });
   });
@@ -35,6 +37,7 @@ describe('4 - Features Interactions', () => {
     });
 
     it('Should search for "Stephens Townsend"', ()=>{
+      cy.get('[data-cy=go-to-page-1]').click();
       cy.get('[data-cy=search-input]').clear().type('Stephens Townsend');
       cy.get('[data-cy=cell-1-1]').contains('Stephens Townsend');
     });
