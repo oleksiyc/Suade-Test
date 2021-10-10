@@ -115,6 +115,48 @@
     --items-by-row-when-screen-is-more-than-1024px: 7;
   }
 
-  // TODO: Add your CSS Styling here
+
+  .container{
+    display: grid;
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: repeat(var(--items-by-row-when-screen-is-less-than-600px), 1fr);
+    }
+
+    @media only screen and (min-width: 600px) {
+      grid-template-columns: repeat(var(--items-by-row-when-screen-is-more-than-600px), 1fr);
+    }
+
+    @media only screen and (min-width: 1024px) {
+      grid-template-columns: repeat(var(--items-by-row-when-screen-is-more-than-1024px), 1fr);
+    }
+  }
+
+  .item{
+    padding: var(--item-padding);
+    margin: var(--item-margin);
+    border-radius: var(--border-radius);
+    color:white;
+
+    .eye-color{
+      position:relative;
+    }
+
+    img{
+      width: 30px;
+      position: absolute;
+      top: -5px;
+      margin-left: 5px;
+    }
+  }
+
+  .item:nth-child(4n+4) {
+    background: #004c6d;
+  }
+  .item:nth-child(2n+1) {
+    background: #547c98;
+  }
+  .item:nth-child(4n+2) {
+    background: #93afc5
+  }
 
 </style>
