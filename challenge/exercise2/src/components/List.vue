@@ -26,7 +26,7 @@
     computed: {
       // sort data by name
       sortedData() {
-        return this.data.sort((a, b)=>{
+        return [...this.data].sort((a, b)=>{
           if (a.name < b.name) {
             return -1;
           } else if (a.name > b.name) {
@@ -52,7 +52,8 @@
     },
     methods: {
       changePage(page) {
-        this.options.pagination.offset = (page) * this.options.pagination.limit;
+        const pageState = {...this.options};
+        pageState.pagination.offset = (page) * this.options.pagination.limit;
       },
     },
   };
